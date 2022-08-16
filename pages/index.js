@@ -8,9 +8,14 @@ import { getVideos } from "../lib/videos";
 
 import styles from "../styles/Home.module.css";
 
-export default function Home() {
+export async function getServerSideProps() {
+  // all video content
   const disneyVideos = getVideos();
+  return { props: { disneyVideos } };
+}
 
+export default function Home({ disneyVideos }) {
+  console.log("disneyVideos:", disneyVideos);
   return (
     <div className={styles.container}>
       <Head>
