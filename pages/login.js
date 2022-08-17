@@ -13,6 +13,7 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [userMsg, setUserMsg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleOnChangeEmail = (e) => {
     setUserMsg("");
@@ -26,19 +27,24 @@ const Login = () => {
     if (email) {
       if (email === "zahrajiryaee77@gmail.com") {
         try {
+          setIsLoading(true);
           console.log("ji");
           const didToken = await magic.auth.loginWithMagicLink({ email });
           console.log({ didToken });
           if (didToken) {
+            setIsLoading(false);
             router.push("/");
           }
         } catch (error) {
           console.error("sth went wrong logging in with magic", error);
+          setIsLoading(false);
         }
       } else {
+        setIsLoading(false);
         setUserMsg("sth went wrong loging in");
       }
     } else {
+      setIsLoading(false);
       setUserMsg("Enter a valid email address");
     }
   };
@@ -81,7 +87,7 @@ const Login = () => {
           <p className={styles.userMsg}>{userMsg}</p>
 
           <button onClick={handleLoginWithEmail} className={styles.loginBtn}>
-            Sign In
+            {isLoading ? "Loading..." : "Sign In"}
           </button>
         </div>
       </main>
