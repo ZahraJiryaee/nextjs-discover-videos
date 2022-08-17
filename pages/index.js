@@ -25,7 +25,6 @@ export default function Home({
   productivityVideos,
   popularVideos,
 }) {
-  console.log("disneyVideos:", disneyVideos);
   return (
     <div className={styles.container}>
       <Head>
