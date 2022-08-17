@@ -10,7 +10,7 @@ import styles from "../styles/Home.module.css";
 
 export async function getServerSideProps() {
   // all video content
-  const disneyVideos = getVideos();
+  const disneyVideos = await getVideos();
   return { props: { disneyVideos } };
 }
 
