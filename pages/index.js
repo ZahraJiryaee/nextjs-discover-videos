@@ -37,6 +37,7 @@ export default function Home({
         <Navbar username="zahrajiryaee77@gmail.com" />
 
         <Banner
+          videoId="4zH5iYM4wJo"
           title="Clifford the red dog"
           subTitle="a very cute dog"
           imgUrl="/static/clifford.webp"
