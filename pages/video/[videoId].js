@@ -9,8 +9,8 @@ import styles from "../../styles/Video.module.css";
 
 Modal.setAppElement("#__next");
 
-export async function getStaticProps() {
-  const videoId = "mYfJxlgR2jw";
+export async function getStaticProps(context) {
+  const videoId = context.params.videoId;
   const videoArray = await getYoutubeVideoById(videoId);
 
   return {
